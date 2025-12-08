@@ -195,6 +195,9 @@ void Aquarium::processInput(GLFWwindow* window, int key, int scancode, int actio
     if (key == GLFW_KEY_ENTER && action == GLFW_PRESS) {
         foodManager->spawnFood();
     }
+    if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS) {
+        glfwSetWindowShouldClose(window, true);
+    }
 }
 
 void Aquarium::spawnBubbles(Bubble(&bubbles)[3], float fishX, float fishY) {
