@@ -64,8 +64,8 @@ void::Aquarium::createShaders() {
 }
 
 void::Aquarium::createVAOs() {
-    goldenFish = new Fish(0.0f, 0.0f, 0.001f, 1.0f, 0.7f, 1.0f, 0.0f, 0.5f,  goldenFishTexture);
-    clownFish = new Fish(0.0f, 0.0f, 0.001f, 1.0f, -0.7f, -0.3f, 0.1f, 0.7f, clownFishTexture);
+    goldenFish = new Fish(0.0f, 0.0f, 0.01f, 1.0f, 0.7f, 1.0f, 0.0f, 0.5f,  goldenFishTexture);
+    clownFish = new Fish(0.0f, 0.0f, 0.01f, 1.0f, -0.7f, -0.3f, 0.1f, 0.7f, clownFishTexture);
 
     float verticesRect[] = {
         -1.0f, 0.7f, 0.0f, 0.0f, 0.0f, // gornje levo teme
@@ -187,12 +187,11 @@ void Aquarium::processInput(GLFWwindow* window, int key, int scancode, int actio
         isChestOpen = !isChestOpen;
     }
     if (key == GLFW_KEY_Z && action == GLFW_PRESS) {
-        spawnBubbles(goldenBubbles, !goldenFish->isFlipped() ? 0.7f + goldenFish->getX() : 1.0f + goldenFish->getX(), 0.25f + goldenFish->getY());
+        spawnBubbles(goldenBubbles, !goldenFish->isFlipped() ? 0.7f + goldenFish->getX() : 1.0f + goldenFish->getX(), 0.25f*goldenFish->getScale() + goldenFish->getY());
     }
     if (key == GLFW_KEY_K && action == GLFW_PRESS) {
-        spawnBubbles(clownBubbles, clownFish->isFlipped() ? -0.34f + clownFish->getX() : -0.7f + clownFish->getX(), 0.3f + clownFish->getY());
+        spawnBubbles(clownBubbles, clownFish->isFlipped() ? -0.34f + clownFish->getX() : -0.7f + clownFish->getX(), 0.3f*clownFish->getScale() + clownFish->getY());
     }
-    // TODO infinite loop here
     if (key == GLFW_KEY_ENTER && action == GLFW_PRESS) {
         foodManager->spawnFood();
     }

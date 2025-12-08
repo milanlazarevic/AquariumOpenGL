@@ -6,6 +6,25 @@
 
 #include "../Header/Util.h"
 #include "../Header/Aquarium.h"
+#include <thread>
+
+
+const int FPS = 75;
+
+void limitFPS(double& lastTimeForRefresh)
+{
+    double now = glfwGetTime();
+    double targetFrameTime = 1.0 / FPS;
+    double remaining = (lastTimeForRefresh + targetFrameTime) - now;
+
+    if (remaining > 0.0)
+    {
+        std::this_thread::sleep_for(std::chrono::duration<double>(remaining));
+    }
+    
+
+    lastTimeForRefresh = glfwGetTime();
+}
 
 
 
@@ -53,15 +72,17 @@ int main()
 
 
     glClearColor(0.5f, 0.8f, 1.00f, 1.0f);
+    double lastTimeForRefresh = glfwGetTime();
 
     while (!glfwWindowShouldClose(window))
     {
+        glfwPollEvents();
         glClear(GL_COLOR_BUFFER_BIT);
         aquarium.run();
         
 
         glfwSwapBuffers(window);
-        glfwPollEvents();
+        limitFPS(lastTimeForRefresh);
     }
 
     glfwDestroyWindow(window);

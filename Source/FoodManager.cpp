@@ -9,7 +9,7 @@ void FoodManager::spawnFood(int count) {
     for (int i = 0; i < count; i++) {
         float x = -0.8f + static_cast<float>(rand()) / RAND_MAX * 1.6f;
         float y = 1.0f;
-        float speed = -0.0015f - static_cast<float>(rand()) / RAND_MAX * 0.002f;
+        float speed = -0.015f - static_cast<float>(rand()) / RAND_MAX * 0.02f;
         particles.push_back(FoodParticle(x, y, speed));
     }
     std::cout << "Spawned " << count << " food particles. Total: " << particles.size() << std::endl;

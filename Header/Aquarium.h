@@ -40,14 +40,14 @@ private:
 
     // Bubbles
     Bubble goldenBubbles[3] = {
-            Bubble(0.001f),
-            Bubble(0.002f),
-            Bubble(0.003f)
+            Bubble(0.01f),
+            Bubble(0.02f),
+            Bubble(0.03f)
     };
     Bubble clownBubbles[3] = {
-            Bubble(0.001f),
-            Bubble(0.002f),
-            Bubble(0.003f)
+            Bubble(0.01f),
+            Bubble(0.02f),
+            Bubble(0.03f)
     };
 
     // Teksture
