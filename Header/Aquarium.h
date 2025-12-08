@@ -55,6 +55,7 @@ private:
     unsigned int chestClosedTexture, chestOpenTexture;
     unsigned int goldenFishTexture, clownFishTexture;
     unsigned int bubbleTexture, foodTexture;
+    unsigned int signatureTexture;
 
     // Šejderi
     unsigned int rectShader, textureShader;
@@ -65,6 +66,7 @@ private:
     unsigned int VAOgrassOverlay, VAOgrass2Overlay;
     unsigned int VAOchest, VAOclownFish, VAOgoldenFish;
     unsigned int VAObubble,VAOclownBubble, VAOfoodParticle;
+    unsigned int VAOsignature;
 
     // Stanje
     bool isChestOpen;

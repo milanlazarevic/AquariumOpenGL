@@ -55,6 +55,7 @@ void Aquarium::loadTextures() {
     processTexture(clownFishTexture, "res/clown_fish.png");
     processTexture(bubbleTexture, "res/bubble.png");
     processTexture(foodTexture, "res/food.png");
+    processTexture(signatureTexture, "res/MilanLazarevicSV2-2022.png");
 }
 
 void::Aquarium::createShaders() {
@@ -156,6 +157,14 @@ void::Aquarium::createVAOs() {
       0.05f, 0.04f,   1.0f, 1.0f, // gornje desno
     };
 
+    float verticesSignature[] = {
+        // Pozicija      Tekstura
+      0.65f, 1.0f,   0.0f, 1.0f, // gornje levo
+      0.65f, 0.7f,   0.0f, 0.0f, // donje levo
+      1.0f, 0.7f,   1.0f, 0.0f, // donje desno
+      1.0f, 1.0f,   1.0f, 1.0f, // gornje desno
+    };
+
 
     VAOrect = Renderer::createVAO(verticesRect, sizeof(verticesRect), 2,0,3);
     VAOrectRight = Renderer::createVAO(verticesRectRight, sizeof(verticesRectRight), 2, 0, 3);
@@ -170,6 +179,7 @@ void::Aquarium::createVAOs() {
     VAObubble = Renderer::createVAO(verticesBubble, sizeof(verticesBubble), 2, 2, 0);
     VAOclownBubble = Renderer::createVAO(verticesBubble, sizeof(verticesBubble), 2, 2, 0);
     VAOfoodParticle = Renderer::createVAO(verticesBubble, sizeof(verticesBubble), 2, 2, 0);
+    VAOsignature = Renderer::createVAO(verticesSignature, sizeof(verticesSignature), 2, 2, 0);
 }
 
 void Aquarium::processInput(GLFWwindow* window, int key, int scancode, int action, int mods) {
@@ -205,6 +215,7 @@ bool Aquarium::initialize() {
 }
 
 void Aquarium::run() {
+    Renderer::drawTexturedRect(textureShader, VAOsignature, signatureTexture);
     Renderer::drawTexturedRect(textureShader, VAOsandOverlay, sandTexture);
     Renderer::drawTexturedRect(textureShader, VAOgrassOverlay, grassTexture);
     Renderer::drawTexturedRect(textureShader, VAOgrass2Overlay, grassRightTexture);
