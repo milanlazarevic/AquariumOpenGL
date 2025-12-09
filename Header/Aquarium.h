@@ -11,7 +11,6 @@
 class Aquarium {
 public:
     Aquarium(GLFWwindow* window, float wallWidth);
-    //~Aquarium();
 
     bool initialize();
     void run();
@@ -31,14 +30,11 @@ private:
 
     GLFWwindow* window;
 
-    // Ribe
     Fish* goldenFish;
     Fish* clownFish;
 
-    // Food sistem
     FoodManager* foodManager;
 
-    // Bubbles
     Bubble goldenBubbles[3] = {
             Bubble(0.01f),
             Bubble(0.02f),
@@ -50,17 +46,14 @@ private:
             Bubble(0.03f)
     };
 
-    // Teksture
     unsigned int grassTexture, grassRightTexture, sandTexture;
     unsigned int chestClosedTexture, chestOpenTexture;
     unsigned int goldenFishTexture, clownFishTexture;
     unsigned int bubbleTexture, foodTexture;
     unsigned int signatureTexture;
 
-    // Šejderi
     unsigned int rectShader, textureShader;
 
-    // VAO-ovi
     unsigned int VAOrect, VAOrectRight, VAOrectBottom;
     unsigned int VAOglassOverlay, VAOsandOverlay;
     unsigned int VAOgrassOverlay, VAOgrass2Overlay;
@@ -68,7 +61,6 @@ private:
     unsigned int VAObubble,VAOclownBubble, VAOfoodParticle;
     unsigned int VAOsignature;
 
-    // Stanje
     bool isChestOpen;
 
     float wallWidth;

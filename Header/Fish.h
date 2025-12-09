@@ -24,7 +24,7 @@ public:
     void moveDown();
 
     void checkBoundaries(float topBound, float bottomBound, float leftBound, float rightBound);
-    void eat(); // Povećava skalu
+    void eat(); 
     void draw(unsigned int shader, unsigned int VAO, unsigned int texture);
 
 private:

@@ -12,18 +12,15 @@ void FoodManager::spawnFood(int count) {
         float speed = -0.015f - static_cast<float>(rand()) / RAND_MAX * 0.02f;
         particles.push_back(FoodParticle(x, y, speed));
     }
-    std::cout << "Spawned " << count << " food particles. Total: " << particles.size() << std::endl;
 }
 
 void FoodManager::update() {
-    // Ukloni čestice koje su ispod granice
     particles.erase(
         std::remove_if(particles.begin(), particles.end(),
             [](const FoodParticle& p) { return !p.isActive() && p.isEaten(); }),
         particles.end()
     );
 
-    // Ažuriraj preostale
     for (auto& particle : particles) {
         particle.update();
     }
