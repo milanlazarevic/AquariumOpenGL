@@ -43,6 +43,50 @@ void Fish::checkBoundaries(float topBound, float bottomBound, float leftBound, f
     }
 }
 
+void Fish::checkChestCollision(bool isChestOpen) {
+    const float chestMinX = 0.0f;   
+    const float chestMaxX = 0.4f;   
+    const float chestMinY = -0.85f; 
+    const float chestMaxY = isChestOpen ? -0.85f + (0.4f * 1.5f): -0.45f;
+
+    float fishLeftX = minX + x;
+    float fishRightX = maxX + x;
+    float fishBottomY = (minY * scale) + y;
+    float fishTopY = (maxY * scale) + y;
+
+    bool collisionX = fishRightX >= chestMinX && fishLeftX <= chestMaxX;
+    bool collisionY = fishTopY >= chestMinY && fishBottomY <= chestMaxY;
+
+    if (collisionX && collisionY) {
+        float overlapLeft = fishRightX - chestMinX;   
+        float overlapRight = chestMaxX - fishLeftX;  
+        float overlapBottom = fishTopY - chestMinY;   
+        float overlapTop = chestMaxY - fishBottomY;   
+
+       
+        float minOverlapX = std::min(overlapLeft, overlapRight);
+        float minOverlapY = std::min(overlapBottom, overlapTop);
+
+        
+        if (minOverlapX < minOverlapY) {
+            if (overlapLeft < overlapRight) {
+                x = chestMinX - maxX;
+            }
+            else {
+                x = chestMaxX - minX;
+            }
+        }
+        else {
+            if (overlapBottom < overlapTop) {
+                y = chestMinY - (maxY * scale);
+            }
+            else {
+                y = chestMaxY - (minY * scale);
+            }
+        }
+    }
+}
+
 void Fish::eat() {
     scale += 0.1f;
     if (scale > 2.0f) scale = 2.0f;

@@ -136,11 +136,11 @@
     <ClCompile Include="Source\Util.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="FoodManager.h" />
-    <ClInclude Include="FoodParticle.h" />
     <ClInclude Include="Header\Aquarium.h" />
     <ClInclude Include="Header\Bubble.h" />
     <ClInclude Include="Header\Fish.h" />
+    <ClInclude Include="Header\FoodManager.h" />
+    <ClInclude Include="Header\FoodParticle.h" />
     <ClInclude Include="Header\Renderer.h" />
     <ClInclude Include="Header\stb_image.h" />
     <ClInclude Include="Header\Util.h" />

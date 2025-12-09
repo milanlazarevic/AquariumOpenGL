@@ -16,6 +16,7 @@ public:
     float getWidth() const { return maxX - minX; }
     float getHeight() const { return maxY - minY; }
     void setTexture(unsigned int texture) { texture = texture; }
+    void checkChestCollision(bool isChestOpen);
     void grow();
 
     void moveLeft();

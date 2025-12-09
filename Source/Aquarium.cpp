@@ -10,14 +10,15 @@ Aquarium::Aquarium(GLFWwindow* window, float wallWidth)
     grassTexture(0), grassRightTexture(0), sandTexture(0),
     chestClosedTexture(0), chestOpenTexture(0),
     goldenFishTexture(0), clownFishTexture(0),
-    bubbleTexture(0), foodTexture(0),
+    bubbleTexture(0), foodTexture(0),signatureTexture(0),
     rectShader(0), textureShader(0),
     VAOrect(0), VAOrectRight(0), VAOrectBottom(0),
     VAOglassOverlay(0), VAOsandOverlay(0),
     VAOgrassOverlay(0), VAOgrass2Overlay(0),
     VAOchest(0), VAOclownFish(0), VAOgoldenFish(0),
     VAObubble(0), VAOclownBubble(0), VAOfoodParticle(0),
-    isChestOpen(false),
+    VAOsignature(0),
+    isChestOpen(true),
     wallWidth(wallWidth)
 {
 }
@@ -244,6 +245,8 @@ void Aquarium::run() {
     handleMovement();
     goldenFish->checkBoundaries(0.7f, -0.9f, -1.0f, 1.0f);
     clownFish->checkBoundaries(0.7f, -0.9f, -1.0f, 1.0f);
+    goldenFish->checkChestCollision(isChestOpen);
+    clownFish->checkChestCollision(isChestOpen);
     foodManager->draw();
     foodManager->update();
     foodManager->checkCollisions(goldenFish->getMinX() + goldenFish->getX(), 
